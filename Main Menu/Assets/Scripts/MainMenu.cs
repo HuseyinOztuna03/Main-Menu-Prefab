@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public GameObject settings;
+    public GameObject info;
     /* chat.openai.com
     program a main menu script with unity library in C# inculiding 
     start first scene, replay, pause, unpause, load scene, next scene, quit functions
@@ -51,5 +52,25 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Settings()
+    {
+        settings.SetActive(true);
+    }
+
+    public void SettingsQuit()
+    {
+        settings.SetActive(false);
+    }
+
+    public void Info()
+    {
+        info.SetActive(true);
+    }
+
+    public void InfoQuit()
+    {
+        info.SetActive(false);
     }
 }
