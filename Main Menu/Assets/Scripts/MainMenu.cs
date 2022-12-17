@@ -36,16 +36,21 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    // Load a specific scene by its build index
+    /* Load a specific scene by its build index
     public void LoadScene(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
-    }
+    }*/
 
     // Move to the next scene in the build order
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PreScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + -1);
     }
 
     // Quit the game
