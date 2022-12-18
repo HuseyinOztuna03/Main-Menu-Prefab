@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject settings;
     public GameObject info;
+
+    public Button backInfo;
+    public Button backSet;
+
     /* chat.openai.com
     program a main menu script with unity library in C# inculiding 
     start first scene, replay, pause, unpause, load scene, next scene, quit functions
     */
 
     // Start the first scene in the game
+
+    private void Start()
+    {
+        backInfo.enabled = false;
+        backSet.enabled = false;
+    }
     public void StartFirstScene()
     {
         SceneManager.LoadScene(0);
@@ -43,6 +54,7 @@ public class MainMenu : MonoBehaviour
     }*/
 
     // Move to the next scene in the build order
+
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -61,21 +73,34 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
+        StartCoroutine(textActive());
         settings.SetActive(true);
     }
 
     public void SettingsQuit()
     {
         settings.SetActive(false);
+        backInfo.enabled = false;
+        backSet.enabled = false;
     }
 
     public void Info()
     {
+        StartCoroutine(textActive());
         info.SetActive(true);
     }
 
     public void InfoQuit()
     {
         info.SetActive(false);
+        backInfo.enabled = false;
+        backSet.enabled = false;
+    }
+
+    IEnumerator textActive()
+    {
+        yield return new WaitForSeconds(0.8f);
+        backInfo.enabled = true;
+        backSet.enabled = true;
     }
 }
